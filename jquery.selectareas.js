@@ -19,6 +19,7 @@
             selectionOrigin = [0, 0],
             area = {
                 id: id,
+                color: "red",
                 x: 0,
                 y: 0,
                 z: 0,
@@ -36,6 +37,10 @@
             },
             getData = function () {
                 return area;
+            },
+            setColor = function(color) {
+                area.color = color;
+                focus();
             },
             fireEvent = function (event) {
                 $image.trigger(event, [area.id, parent.areas()]);
@@ -80,6 +85,7 @@
                 // Update the outline layer
                 $outline.css({
                     cursor: "default",
+                    background: area.color,
                     width: area.width,
                     height: area.height,
                     left: area.x,
@@ -464,6 +470,7 @@
         // Initialize an outline layer and place it above the trigger layer
         $outline = $("<div class=\"select-areas-outline\" />")
             .css({
+                background: area.color,
                 opacity : options.outlineOpacity,
                 position : "absolute"
             })
@@ -514,6 +521,7 @@
 
         return {
             getData: getData,
+            setColor: setColor,
             startSelection: startSelection,
             deleteSelection: deleteSelection,
             options: options,
@@ -728,6 +736,12 @@
             this._areas[id].startSelection(event);
         }
         return id;
+    };
+
+    $.imageSelectAreas.prototype.setColor = function (id, options) {
+        if (this._areas[id]) {
+            this._areas[id].setColor(options);
+        }
     };
 
     $.imageSelectAreas.prototype.set = function (id, options, silent) {
