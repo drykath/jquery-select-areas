@@ -95,7 +95,6 @@
 
                 // Update the selection layer
                 $selection.css({
-                    backgroundPosition : ( - area.x - options.borderThickness) + "px " + ( - area.y - options.borderThickness) + "px",
                     cursor : options.allowMove ? "move" : "default",
                     width: (area.width - options.borderThickness * 2 > 0) ? (area.width - options.borderThickness * 2) : 0,
                     height: (area.height - options.borderThickness * 2 > 0) ? (area.height - options.borderThickness * 2) : 0,
@@ -480,7 +479,6 @@
         $selection = $("<div />")
             .addClass("select-areas-background-area")
             .css({
-                background : "#fff url(" + $image.attr("src") + ") no-repeat",
                 backgroundSize : $image.width() + "px " + $image.height() + "px",
                 position : "absolute"
             })
