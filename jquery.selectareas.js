@@ -95,12 +95,12 @@
 
                 // Update the selection layer
                 $selection.css({
-                    backgroundPosition : ( - area.x - 1) + "px " + ( - area.y - 1) + "px",
+                    backgroundPosition : ( - area.x - options.borderThickness) + "px " + ( - area.y - options.borderThickness) + "px",
                     cursor : options.allowMove ? "move" : "default",
-                    width: (area.width - 2 > 0) ? (area.width - 2) : 0,
-                    height: (area.height - 2 > 0) ? (area.height - 2) : 0,
-                    left : area.x + 1,
-                    top : area.y + 1,
+                    width: (area.width - options.borderThickness * 2 > 0) ? (area.width - options.borderThickness * 2) : 0,
+                    height: (area.height - options.borderThickness * 2 > 0) ? (area.height - options.borderThickness * 2) : 0,
+                    left : area.x + options.borderThickness,
+                    top : area.y + options.borderThickness,
                     "z-index": area.z + 2
                 });
             },
@@ -573,6 +573,7 @@
                 allowDelete: true,
                 allowNudge: true,
                 aspectRatio: 0,
+                borderThickness: 1,
                 minSize: [0, 0],
                 maxSize: [0, 0],
                 width: 0,
