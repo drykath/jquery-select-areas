@@ -580,7 +580,8 @@
                 overlayOpacity: 0.5,
                 areas: [],
                 onChanging: null,
-                onChanged: null
+                onChanged: null,
+                blurred: true
             };
 
         this.options = $.extend(defaultOptions, customOptions);
@@ -690,7 +691,7 @@
         this.$overlay.css({
             display : nbAreas? "block" : "none"
         });
-        if (nbAreas) {
+        if (nbAreas && this.options.blurred) {
             this.$image.addClass("blurred");
         } else {
             this.$image.removeClass("blurred");
