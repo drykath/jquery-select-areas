@@ -21,6 +21,8 @@ Best regards
     $("#mypic").selectAreas({
       minSize: [30, 30],    // Minimum size of a selection
       maxSize: [400, 300],  // Maximum size of a selection
+      onAreaFocus: $.noop,    // fired when area blur
+      onAreaBlur: $.noop,    // fired when area focus
       onChanged: $.noop,    // fired when a selection is released
       onChanging: $.noop    // fired during the modification of a selection
     });
@@ -48,6 +50,10 @@ An area is described (when retrieved or set) by a json object:
         z,  // Z-index (0 when inactive or 100 when focused)
         width,  // Width of the area (Size)
         height  // Height of the area (Size)
+        customId, // custom id you can use it for search
+        text, //  text to be shown on area
+        color, // not used for now
+      
     }
 
 ## Options
@@ -65,6 +71,8 @@ Here is a list of available options for selectAreas, with their *default value*:
  - **maxAreas** (*0*) : When not 0, set the maximum number of area that can be drawn.
  - **outlineOpacity** (*0.5*) : opacity of the moving dotted outline around a selection.
  - **overlayOpacity** (*0.5*) : opacity of the overlay layer over the image
+ - **onAreaFocus**  (*null*) : fired when area blur
+ - **onAreaBlur**  (*null*) : fired when area focus
  - **areas** (*[]*) : list of areas to add to the image from the beginning  (id will be ignored)
  - **onChanging** (*null*) : triggered when the event "changing" is fired
  - **onChanged** (*null*) : triggered when the event "changed" is fired
