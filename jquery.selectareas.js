@@ -823,6 +823,17 @@
         });
     };
 
+    $.imageSelectAreas.prototype.hasFocus = function () {
+        var selectedArea = false;
+        this._eachArea(function (area) {
+            if (area.getData().z === 100) {
+                selectedArea = area.getData();
+                return false;
+            }
+        });
+        return selectedArea;
+    };
+
     $.imageSelectAreas.prototype.contains  = function (point) {
         var res = false;
         this._eachArea(function (area) {
